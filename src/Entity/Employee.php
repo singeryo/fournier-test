@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EmployeeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
 /**
  * @ORM\Entity(repositoryClass=EmployeeRepository::class)
@@ -45,6 +46,7 @@ class Employee
     /**
      * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="employees")
      * @ORM\JoinColumn(nullable=false)
+     * @Ignore()
      */
     private $service;
 
