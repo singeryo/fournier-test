@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des services{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Bonjour ! Voici les différents services</h1>
+
+    <ul>
+        {% for service in services %}
+            <li><a href="{{ path('app_service', { id: service.id }) }}">{{ service }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
