@@ -4,6 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Employee;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class EmployeeCrudController extends AbstractCrudController
 {
@@ -12,14 +15,31 @@ class EmployeeCrudController extends AbstractCrudController
         return Employee::class;
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        yield TextField::new('name', 'Nom');
+        yield TextField::new('firstname', 'Prénom');
+        yield TextField::new('address', 'Adresse');
+        yield TextField::new('phone', 'Téléphone');
+        yield ChoiceField::new('passions', 'Liste des passions')
+            ->allowMultipleChoices()
+            ->autocomplete()
+            ->setChoices([
+                'Arts' => 'arts',
+                'Sports' => 'sports',
+                'Musique' => 'musique',
+                'Jeux vidéo' => 'video-games',
+                'Jeux de société' => 'board-games',
+                'Voyages' => 'travel',
+                'Méditation' => 'meditate',
+                'Lecture' => 'reading',
+                'Culture' => 'culture',
+                'Business' => 'business',
+                'Technologies' => 'tech',
+                'Cuisine' => 'cooking'
+            ])
+        ;
+        yield AssociationField::new('service');
     }
-    */
+
 }
